@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Text Analyzer</title>
+    <link rel="stylesheet" href="src/style/variables.css">
+    <link rel="stylesheet" href="src/style/reset.css">
+    <link rel="stylesheet" href="src/style/base.css">
+    <link rel="stylesheet" href="src/style/components.css">
+    <style>
+        .test-info {
+            background: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+            color: var(--text-primary);
+        }
+        .test-button {
+            background: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 10px 20px;
+            color: var(--text-primary);
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background: var(--bg-secondary);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="test-info">
+            <h2>🧪 Test Page</h2>
+            <p>This page tests if all scripts are loaded and working properly.</p>
+            <div id="testResults"></div>
+        </div>
+
+        <header class="header">
+            <h1 data-i18n="app_title">Text Analyzer</h1>
+            <div class="controls">
+                <div class="language-controls">
+                    <select class="language-select" id="languageSelect">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="ru">Русский</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                    </select>
+                </div>
+                <button class="btn theme-toggle" id="themeToggle" data-i18n="theme_toggle" title="Toggle theme">
+                    🌙
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="textarea-container">
+                <label for="textInput" class="textarea-label" data-i18n="enter_text">Enter your text</label>
+                <textarea 
+                    id="textInput" 
+                    placeholder="Type or paste your text here..."
+                    data-i18n-placeholder="text_placeholder"
+                ></textarea>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="wordCount">0</div>
+                    <div class="stat-label" data-i18n="word_count">Word count</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="charCountWithSpaces">0</div>
+                    <div class="stat-label" data-i18n="char_count_with_spaces">Character count with spaces</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="charCountWithoutSpaces">0</div>
+                    <div class="stat-label" data-i18n="char_count_without_spaces">Character count without spaces</div>
+                </div>
+            </div>
+        </main>
+
+        <div class="test-info">
+            <h3>Test Controls</h3>
+            <button class="test-button" onclick="testThemeToggle()">Test Theme Toggle</button>
+            <button class="test-button" onclick="testLanguageChange()">Test Language Change</button>
+            <button class="test-button" onclick="testTextAnalysis()">Test Text Analysis</button>
+            <button class="test-button" onclick="showDebugInfo()">Show Debug Info</button>
+        </div>
+    </div>
+
+    <script src="src/script/i18n.js"></script>
+    <script src="src/script/theme.js"></script>
+    <script src="src/script/counter.js"></script>
+    <script src="src/script/main.js"></script>
+    
+    <script>
+        // Test functions
+        function testThemeToggle() {
+            if (window.themeManager) {
+                window.themeManager.toggleTheme();
+                updateTestResults('Theme toggled successfully');
+            } else {
+                updateTestResults('❌ ThemeManager not found');
+            }
+        }
+
+        function testLanguageChange() {
+            if (window.i18n) {
+                const currentLang = window.i18n.currentLang;
+                const newLang = currentLang === 'en' ? 'es' : 'en';
+                window.i18n.setLanguage(newLang);
+                updateTestResults(`Language changed from ${currentLang} to ${newLang}`);
+            } else {
+                updateTestResults('❌ I18n not found');
+            }
+        }
+
+        function testTextAnalysis() {
+            const textarea = document.getElementById('textInput');
+            if (textarea) {
+                textarea.value = 'Hello world! This is a test.';
+                textarea.dispatchEvent(new Event('input'));
+                updateTestResults('Text analysis test completed');
+            } else {
+                updateTestResults('❌ Textarea not found');
+            }
+        }
+
+        function showDebugInfo() {
+            const info = {
+                config: window.config ? '✅ Loaded' : '❌ Not loaded',
+                translations: window.translations ? '✅ Loaded' : '❌ Not loaded',
+                i18n: window.i18n ? '✅ Initialized' : '❌ Not initialized',
+                themeManager: window.themeManager ? '✅ Initialized' : '❌ Not initialized',
+                textAnalyzer: window.textAnalyzer ? '✅ Initialized' : '❌ Not initialized',
+                currentTheme: window.themeManager?.currentTheme || 'Unknown',
+                currentLang: window.i18n?.currentLang || 'Unknown'
+            };
+            
+            const debugText = Object.entries(info)
+                .map(([key, value]) => `${key}: ${value}`)
+                .join('\n');
+            
+            updateTestResults(debugText);
+        }
+
+        function updateTestResults(message) {
+            const resultsDiv = document.getElementById('testResults');
+            if (resultsDiv) {
+                resultsDiv.innerHTML = `<pre>${message}</pre>`;
+            }
+        }
+
+        // Auto-run tests after page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                showDebugInfo();
+            }, 1000);
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,177 @@
+/* Reusable components */
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: var(--glass-bg);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    color: var(--text-primary);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn:hover {
+    background: var(--bg-secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Language selector dropdown */
+.language-select {
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    box-shadow: var(--glass-shadow);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+}
+
+.language-select:hover {
+    background-color: var(--bg-secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary);
+}
+
+.language-select:focus {
+    outline: none;
+    border-color: var(--text-secondary);
+    box-shadow: var(--shadow-primary);
+}
+
+.language-select option {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    padding: 8px;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    padding: 12px;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    background: var(--glass-bg);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: var(--bg-secondary);
+    transform: translateY(-2px) rotate(180deg);
+    box-shadow: var(--shadow-primary);
+}
+
+.theme-toggle:active {
+    transform: translateY(0) rotate(180deg);
+}
+
+/* Embeddable version adjustments */
+.text-analyzer-embed {
+    font-size: 0.9rem;
+}
+
+.text-analyzer-embed .header h1 {
+    font-size: 1.5rem;
+}
+
+.text-analyzer-embed .stat-value {
+    font-size: 2rem;
+}
+
+.text-analyzer-embed .stat-label {
+    font-size: 0.8rem;
+}
+
+.text-analyzer-embed textarea {
+    min-height: 150px;
+    padding: 15px;
+}
+
+.text-analyzer-embed .stat-card {
+    padding: 20px;
+}
+
+.text-analyzer-embed .btn {
+    padding: 10px 16px;
+    font-size: 0.8rem;
+}
+
+.text-analyzer-embed .language-select {
+    padding: 10px 14px;
+    font-size: 0.8rem;
+    min-width: 100px;
+}
+
+.text-analyzer-embed .theme-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .language-select {
+        min-width: 100px;
+        font-size: 0.8rem;
+        padding: 10px 14px;
+        padding-right: 35px;
+        background-size: 14px;
+    }
+    
+    .theme-toggle {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .language-select {
+        min-width: 80px;
+        font-size: 0.75rem;
+        padding: 8px 12px;
+        padding-right: 30px;
+        background-size: 12px;
+    }
+    
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+} 

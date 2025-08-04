@@ -1,0 +1,12 @@
+{
+    "extends": "base.json",
+    "app_title": "Text Analyzer",
+    "enter_text": "Enter your text",
+    "text_placeholder": "Type or paste your text here...",
+    "word_count": "Word count",
+    "char_count_with_spaces": "Character count with spaces",
+    "char_count_without_spaces": "Character count without spaces",
+    "light_theme": "Light theme",
+    "dark_theme": "Dark theme",
+    "theme_toggle": "Toggle theme"
+} 

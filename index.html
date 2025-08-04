@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Analyzer</title>
+    <link rel="stylesheet" href="src/style/variables.css">
+    <link rel="stylesheet" href="src/style/reset.css">
+    <link rel="stylesheet" href="src/style/base.css">
+    <link rel="stylesheet" href="src/style/components.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 data-i18n="app_title">Text Analyzer</h1>
+            <div class="controls">
+                <div class="language-controls">
+                    <select class="language-select" id="languageSelect">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="ru">Русский</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                    </select>
+                </div>
+                <button class="btn theme-toggle" id="themeToggle" data-i18n="theme_toggle" title="Toggle theme">
+                    🌙
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="textarea-container">
+                <label for="textInput" class="textarea-label" data-i18n="enter_text">Enter your text</label>
+                <textarea 
+                    id="textInput" 
+                    placeholder="Type or paste your text here..."
+                    data-i18n-placeholder="text_placeholder"
+                ></textarea>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="wordCount">0</div>
+                    <div class="stat-label" data-i18n="word_count">Word count</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="charCountWithSpaces">0</div>
+                    <div class="stat-label" data-i18n="char_count_with_spaces">Character count with spaces</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="charCountWithoutSpaces">0</div>
+                    <div class="stat-label" data-i18n="char_count_without_spaces">Character count without spaces</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="src/script/i18n.js"></script>
+    <script src="src/script/theme.js"></script>
+    <script src="src/script/counter.js"></script>
+    <script src="src/script/main.js"></script>
+</body>
+</html> 
