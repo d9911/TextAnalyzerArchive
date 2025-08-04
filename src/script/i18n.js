@@ -7,7 +7,9 @@ class I18n {
     }
 
     detectLanguage() {
-        const storedLang = localStorage.getItem(window.config?.app?.storage_keys?.language || 'preferred-language');
+        const storageKey = window.config?.app?.storage_keys?.language || 'preferred-language';
+        const storedLang = localStorage.getItem(storageKey);
+        
         if (storedLang && window.config?.app?.supported_languages?.includes(storedLang)) {
             return storedLang;
         }
@@ -29,33 +31,46 @@ class I18n {
         }
         
         this.currentLang = lang;
-        localStorage.setItem(window.config?.app?.storage_keys?.language || 'preferred-language', lang);
+        const storageKey = window.config?.app?.storage_keys?.language || 'preferred-language';
+        localStorage.setItem(storageKey, lang);
+        
         this.updateContent();
         this.updateLanguageSelect();
     }
 
     updateContent() {
         const elements = document.querySelectorAll('[data-i18n]');
+        
         elements.forEach(element => {
             const key = element.getAttribute('data-i18n');
             const translation = this.getNestedTranslation(this.currentLang, key);
             if (translation) {
                 element.textContent = translation;
+            } else {
+                console.warn(`No translation found for key: ${key}`);
             }
         });
 
         // Update placeholders
         const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
+        
         placeholderElements.forEach(element => {
             const key = element.getAttribute('data-i18n-placeholder');
             const translation = this.getNestedTranslation(this.currentLang, key);
             if (translation) {
                 element.placeholder = translation;
+            } else {
+                console.warn(`No translation found for placeholder key: ${key}`);
             }
         });
     }
 
     getNestedTranslation(lang, key) {
+        if (!window.translations || !window.translations[lang]) {
+            console.warn(`No translations available for language: ${lang}`);
+            return null;
+        }
+        
         const keys = key.split('.');
         let value = window.translations[lang];
         
@@ -63,6 +78,7 @@ class I18n {
             if (value && typeof value === 'object' && k in value) {
                 value = value[k];
             } else {
+                console.warn(`Key ${k} not found in translation for ${lang}`);
                 return null;
             }
         }
@@ -72,8 +88,10 @@ class I18n {
 
     updateLanguageSelect() {
         const select = document.getElementById('languageSelect');
-        if (!select) return;
+        if (!select) {
+            return;
+        }
         
         select.value = this.currentLang;
     }
-} 
+}

@@ -14,6 +14,7 @@ A simple, embeddable HTML/CSS/JS web application with internationalization (i18n
 - **Dynamic loading**: Translations and configuration loaded asynchronously
 - **No hardcoded values**: All text and configuration comes from JSON files
 - **Base data inheritance**: Common data shared via `base.json` to avoid duplication
+- **Fallback system**: Works even if JSON files fail to load
 
 ### 🌓 Light/Dark Themes with Glass Morphism
 - **Beautiful glass morphism design**: Modern translucent glass effect
@@ -54,13 +55,25 @@ Open `test.html` in your browser for comprehensive testing:
 - **Test Language Change**: Tests internationalization
 - **Test Text Analysis**: Checks real-time counting
 - **Show Debug Info**: Displays system status
+- **Test JSON Loading**: Checks if all JSON files are accessible
+- **Clear Log**: Clears the debug log
+- **Real-time Debug Log**: Shows all console messages with timestamps
+
+### Debugging Features
+The test page includes:
+- **Real-time logging**: All console messages displayed on the page
+- **Color-coded status**: Green for success, red for errors, yellow for warnings
+- **JSON file testing**: Checks if all configuration files are accessible
+- **Detailed system info**: Shows browser capabilities and loaded components
+- **Timestamps**: All log entries include timestamps
 
 ### Debugging
 If something doesn't work:
 1. Open browser developer tools (F12)
 2. Check the Console tab for error messages
 3. Look for debug messages starting with "Loading configuration..."
-4. Verify all JSON files are accessible
+4. Verify all JSON files are accessible using "Test JSON Loading"
+5. Check the debug log on the test page for real-time information
 
 ## Directory Structure
 
@@ -104,6 +117,8 @@ Simply open `index.html` in any modern web browser. The application will:
 4. Detect your browser language and system theme preference
 5. Load with appropriate language and theme
 6. Provide real-time text analysis as you type
+
+**Note**: If JSON files fail to load, the application will use built-in fallback data to ensure it still works.
 
 ### Embedding in Other Websites
 
@@ -162,6 +177,7 @@ Copy the content from `embed.html` and integrate it directly into your HTML page
 - **No hardcoded values**: Everything configurable via JSON
 - **Dynamic loading**: Configuration loaded at runtime
 - **Fallback system**: Sensible defaults if config fails to load
+- **Built-in fallbacks**: Application works even without JSON files
 
 ### I18n System
 - Uses `<span data-i18n="key">Default text</span>` pattern in HTML
@@ -172,6 +188,7 @@ Copy the content from `embed.html` and integrate it directly into your HTML page
 - **No hardcoded values**: All text comes from JSON files
 - **Base inheritance**: Common data shared via `base.json`
 - **Dropdown selector**: Clean language selection interface
+- **Fallback translations**: Built-in translations if JSON files fail
 
 ### Theme System
 - CSS custom properties (variables) for dynamic theming
@@ -274,6 +291,7 @@ Edit the CSS custom properties in `src/style/variables.css`:
 - **No hardcoded values**: Everything configurable and maintainable
 - **No data duplication**: Common data shared via base.json
 - **Modern design**: Glass morphism with smooth animations
+- **Fallback system**: Works even if JSON files are unavailable
 
 ## Troubleshooting
 
@@ -282,17 +300,26 @@ Edit the CSS custom properties in `src/style/variables.css`:
 2. Verify `theme.js` is loaded correctly
 3. Ensure `data-theme` attribute is set on `<html>` element
 4. Check if localStorage is available
+5. Use `quick-test.html` to isolate the issue
 
 ### Languages Not Loading
 1. Verify all JSON files exist in `src/i18n/`
 2. Check network tab for failed requests
 3. Ensure `base.json` is loaded first
 4. Verify `extends` property in language files
+5. Use "Test JSON Loading" on test page
 
 ### Glass Effect Not Working
 1. Check if browser supports `backdrop-filter`
 2. Verify CSS variables are defined
 3. Ensure `data-theme` attribute is set correctly
+
+### Application Not Working
+1. Open `test.html` for comprehensive debugging
+2. Check the debug log for real-time information
+3. Use "Show Debug Info" to see system status
+4. Verify all required files are accessible
+5. Check browser console for detailed error messages
 
 ## License
 
