@@ -49,7 +49,7 @@ const fallbackTranslations = {
         char_count_without_spaces: "Character count without spaces",
         light_theme: "Light theme",
         dark_theme: "Dark theme",
-        theme_toggle: "Toggle theme"
+        theme_toggle: "TogT"
     },
     es: {
         app_title: "Analizador de Texto",
