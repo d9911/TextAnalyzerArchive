@@ -5,6 +5,7 @@ A simple, embeddable HTML/CSS/JS web application with internationalization (i18n
 ## Features
 
 ### 🌍 Internationalization (i18n)
+
 - **Five supported languages**: English, Spanish, Russian, French, and German
 - **Dropdown language selector**: Clean dropdown menu instead of multiple buttons
 - **Automatic language detection**: Detects user's browser language on first load
@@ -17,6 +18,7 @@ A simple, embeddable HTML/CSS/JS web application with internationalization (i18n
 - **Fallback system**: Works even if JSON files fail to load
 
 ### 🌓 Light/Dark Themes with Glass Morphism
+
 - **Beautiful glass morphism design**: Modern translucent glass effect
 - **System preference detection**: Automatically detects user's system theme preference
 - **Manual theme toggle**: Button to switch between light and dark themes
@@ -26,6 +28,7 @@ A simple, embeddable HTML/CSS/JS web application with internationalization (i18n
 - **Backdrop blur effects**: Modern glass morphism with blur effects
 
 ### 📊 Text Analysis
+
 - **Real-time counting**: Updates as user types
 - **Word count**: Counts words (space-separated)
 - **Character count with spaces**: Total character count including spaces
@@ -44,13 +47,17 @@ A simple, embeddable HTML/CSS/JS web application with internationalization (i18n
 ## Testing
 
 ### Quick Theme Test
+
 Open `quick-test.html` in your browser to quickly test if theme switching works:
+
 - Click the theme toggle button (🌙/☀️)
 - The page should switch between light and dark themes
 - Check browser console for debug messages
 
 ### Full Application Test
+
 Open `test.html` in your browser for comprehensive testing:
+
 - **Test Theme Toggle**: Verifies theme switching functionality
 - **Test Language Change**: Tests internationalization
 - **Test Text Analysis**: Checks real-time counting
@@ -60,7 +67,9 @@ Open `test.html` in your browser for comprehensive testing:
 - **Real-time Debug Log**: Shows all console messages with timestamps
 
 ### Debugging Features
+
 The test page includes:
+
 - **Real-time logging**: All console messages displayed on the page
 - **Color-coded status**: Green for success, red for errors, yellow for warnings
 - **JSON file testing**: Checks if all configuration files are accessible
@@ -68,7 +77,9 @@ The test page includes:
 - **Timestamps**: All log entries include timestamps
 
 ### Debugging
+
 If something doesn't work:
+
 1. Open browser developer tools (F12)
 2. Check the Console tab for error messages
 3. Look for debug messages starting with "Loading configuration..."
@@ -110,7 +121,9 @@ i18n-template/
 ## Usage
 
 ### Standalone Application
+
 Simply open `index.html` in any modern web browser. The application will:
+
 1. Load common data from `src/i18n/base.json`
 2. Load configuration from `src/i18n/config.json`
 3. Load translations from JSON files in `src/i18n/`
@@ -123,42 +136,39 @@ Simply open `index.html` in any modern web browser. The application will:
 ### Embedding in Other Websites
 
 #### Option 1: Iframe Embedding
+
 ```html
-<iframe 
-    src="embed.html" 
-    width="100%" 
-    height="500px" 
-    frameborder="0"
-    style="border: 1px solid #e0e0e0; border-radius: 8px;">
-</iframe>
+<iframe src="embed.html" width="100%" height="500px" frameborder="0" style="border: 1px solid #e0e0e0; border-radius: 8px;"> </iframe>
 ```
 
 #### Option 2: Direct Integration
+
 Copy the content from `embed.html` and integrate it directly into your HTML page:
 
 ```html
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Your Website</title>
     <!-- Your existing styles -->
-</head>
-<body>
+  </head>
+  <body>
     <!-- Your existing content -->
-    
+
     <!-- Embed the text analyzer -->
     <div class="text-analyzer-embed">
-        <!-- Copy the entire content from embed.html here -->
+      <!-- Copy the entire content from embed.html here -->
     </div>
-    
+
     <!-- Your existing content -->
-</body>
+  </body>
 </html>
 ```
 
 ## Technical Implementation
 
 ### Glass Morphism Design
+
 - **Translucent backgrounds**: Semi-transparent glass effect
 - **Backdrop blur**: Modern blur effects for depth
 - **Subtle borders**: Light borders for definition
@@ -167,12 +177,14 @@ Copy the content from `embed.html` and integrate it directly into your HTML page
 - **Theme-aware**: Different glass effects for light/dark themes
 
 ### Base Data System
+
 - **`base.json`**: Contains all common data shared across languages
 - **No duplication**: Language buttons, theme icons, storage keys, etc. defined once
 - **Inheritance system**: All JSON files can extend `base.json`
 - **Automatic merging**: JavaScript automatically merges base data with language-specific data
 
 ### Configuration System
+
 - **Centralized config**: All settings in `src/i18n/config.json`
 - **No hardcoded values**: Everything configurable via JSON
 - **Dynamic loading**: Configuration loaded at runtime
@@ -180,6 +192,7 @@ Copy the content from `embed.html` and integrate it directly into your HTML page
 - **Built-in fallbacks**: Application works even without JSON files
 
 ### I18n System
+
 - Uses `<span data-i18n="key">Default text</span>` pattern in HTML
 - JavaScript updates text content based on selected language
 - **External JSON files**: All translations stored in `src/i18n/` directory
@@ -191,6 +204,7 @@ Copy the content from `embed.html` and integrate it directly into your HTML page
 - **Fallback translations**: Built-in translations if JSON files fail
 
 ### Theme System
+
 - CSS custom properties (variables) for dynamic theming
 - `data-theme` attribute controls theme switching
 - System preference detection using `prefers-color-scheme`
@@ -199,6 +213,7 @@ Copy the content from `embed.html` and integrate it directly into your HTML page
 - **Glass morphism**: Modern translucent design
 
 ### Text Analysis
+
 - Real-time event listeners on textarea input
 - Efficient word counting algorithm
 - Character counting with and without spaces
@@ -217,6 +232,7 @@ Copy the content from `embed.html` and integrate it directly into your HTML page
 ## Customization
 
 ### Adding New Languages
+
 1. Create a new JSON file in `src/i18n/` (e.g., `it.json`)
 2. Add `"extends": "base.json"` to inherit common data
 3. Add only language-specific translations
@@ -225,24 +241,27 @@ Copy the content from `embed.html` and integrate it directly into your HTML page
 6. Add language option to the HTML select dropdown
 
 Example:
+
 ```json
 // src/i18n/it.json
 {
-    "extends": "base.json",
-    "app_title": "Analizzatore di Testo",
-    "enter_text": "Inserisci il tuo testo",
-    "text_placeholder": "Scrivi o incolla il tuo testo qui...",
-    "word_count": "Conteggio parole",
-    "char_count_with_spaces": "Conteggio caratteri con spazi",
-    "char_count_without_spaces": "Conteggio caratteri senza spazi",
-    "light_theme": "Tema chiaro",
-    "dark_theme": "Tema scuro",
-    "theme_toggle": "Cambia tema"
+  "extends": "base.json",
+  "app_title": "Analizzatore di Testo",
+  "enter_text": "Inserisci il tuo testo",
+  "text_placeholder": "Scrivi o incolla il tuo testo qui...",
+  "word_count": "Conteggio parole",
+  "char_count_with_spaces": "Conteggio caratteri con spazi",
+  "char_count_without_spaces": "Conteggio caratteri senza spazi",
+  "light_theme": "Tema chiaro",
+  "dark_theme": "Tema scuro",
+  "theme_toggle": "Cambia tema"
 }
 ```
 
 ### Modifying Common Data
+
 Edit `src/i18n/base.json` to change:
+
 - Language button labels
 - Language names for dropdown
 - Theme icons
@@ -251,32 +270,36 @@ Edit `src/i18n/base.json` to change:
 - UI settings
 
 ### Modifying Configuration
+
 Edit `src/i18n/config.json` to change:
+
 - Supported languages
 - Theme names
 - Text analysis events
 - Responsive breakpoints
 
 ### Modifying Glass Morphism Design
+
 Edit the CSS custom properties in `src/style/variables.css`:
 
 ```css
 :root {
-    --glass-bg: rgba(255, 255, 255, 0.25);
-    --glass-border: rgba(255, 255, 255, 0.18);
-    --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
-    --backdrop-blur: blur(10px);
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  --backdrop-blur: blur(10px);
 }
 
-[data-theme="dark"] {
-    --glass-bg: rgba(33, 37, 41, 0.25);
-    --glass-border: rgba(248, 249, 250, 0.18);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    --backdrop-blur: blur(10px);
+[data-theme='dark'] {
+  --glass-bg: rgba(33, 37, 41, 0.25);
+  --glass-border: rgba(248, 249, 250, 0.18);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --backdrop-blur: blur(10px);
 }
 ```
 
 ### Adding New Statistics
+
 1. Add new HTML element for the statistic
 2. Add corresponding JavaScript logic in the `TextAnalyzer` class
 3. Add translations for the new statistic label to all JSON files
@@ -296,6 +319,7 @@ Edit the CSS custom properties in `src/style/variables.css`:
 ## Troubleshooting
 
 ### Theme Not Switching
+
 1. Check browser console for errors
 2. Verify `theme.js` is loaded correctly
 3. Ensure `data-theme` attribute is set on `<html>` element
@@ -303,6 +327,7 @@ Edit the CSS custom properties in `src/style/variables.css`:
 5. Use `quick-test.html` to isolate the issue
 
 ### Languages Not Loading
+
 1. Verify all JSON files exist in `src/i18n/`
 2. Check network tab for failed requests
 3. Ensure `base.json` is loaded first
@@ -310,11 +335,13 @@ Edit the CSS custom properties in `src/style/variables.css`:
 5. Use "Test JSON Loading" on test page
 
 ### Glass Effect Not Working
+
 1. Check if browser supports `backdrop-filter`
 2. Verify CSS variables are defined
 3. Ensure `data-theme` attribute is set correctly
 
 ### Application Not Working
+
 1. Open `test.html` for comprehensive debugging
 2. Check the debug log for real-time information
 3. Use "Show Debug Info" to see system status
@@ -327,4 +354,4 @@ This project is open source and available under the MIT License.
 
 ## Contributing
 
-Feel free to submit issues, feature requests, or pull requests to improve the application. 
+Feel free to submit issues, feature requests, or pull requests to improve the application.

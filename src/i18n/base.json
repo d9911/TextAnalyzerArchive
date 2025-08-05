@@ -1,50 +1,50 @@
 {
-    "language_buttons": {
-        "en": "EN",
-        "es": "ES",
-        "ru": "RU",
-        "fr": "FR",
-        "de": "DE"
+  "language_buttons": {
+    "en": "EN",
+    "es": "ES",
+    "ru": "RU",
+    "fr": "FR",
+    "de": "DE"
+  },
+  "language_names": {
+    "en": "English",
+    "es": "Español",
+    "ru": "Русский",
+    "fr": "Français",
+    "de": "Deutsch"
+  },
+  "theme_icons": {
+    "light": "🌙",
+    "dark": "☀️"
+  },
+  "default_language": "en",
+  "supported_languages": ["en", "es", "ru", "fr", "de"],
+  "storage_keys": {
+    "language": "preferred-language",
+    "theme": "preferred-theme"
+  },
+  "themes": {
+    "light": "light",
+    "dark": "dark",
+    "auto": "auto"
+  },
+  "text_analysis": {
+    "default_values": {
+      "word_count": 0,
+      "char_count_with_spaces": 0,
+      "char_count_without_spaces": 0
     },
-    "language_names": {
-        "en": "English",
-        "es": "Español",
-        "ru": "Русский",
-        "fr": "Français",
-        "de": "Deutsch"
+    "update_events": ["input", "paste", "keyup"]
+  },
+  "ui": {
+    "responsive_breakpoints": {
+      "mobile": 600,
+      "small_mobile": 400
     },
-    "theme_icons": {
-        "light": "🌙",
-        "dark": "☀️"
-    },
-    "default_language": "en",
-    "supported_languages": ["en", "es", "ru", "fr", "de"],
-    "storage_keys": {
-        "language": "preferred-language",
-        "theme": "preferred-theme"
-    },
-    "themes": {
-        "light": "light",
-        "dark": "dark",
-        "auto": "auto"
-    },
-    "text_analysis": {
-        "default_values": {
-            "word_count": 0,
-            "char_count_with_spaces": 0,
-            "char_count_without_spaces": 0
-        },
-        "update_events": ["input", "paste", "keyup"]
-    },
-    "ui": {
-        "responsive_breakpoints": {
-            "mobile": 600,
-            "small_mobile": 400
-        },
-        "animation_duration": "0.3s"
-    },
-    "app": {
-        "name": "Text Analyzer",
-        "version": "1.0.0"
-    }
-} 
+    "animation_duration": "0.3s"
+  },
+  "app": {
+    "name": "Text Analyzer",
+    "version": "1.0.0"
+  }
+}

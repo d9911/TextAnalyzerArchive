@@ -1,120 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Test - Text Analyzer</title>
-    <link rel="stylesheet" href="src/style/variables.css">
-    <link rel="stylesheet" href="src/style/reset.css">
-    <link rel="stylesheet" href="src/style/base.css">
-    <link rel="stylesheet" href="src/style/components.css">
+    <link rel="stylesheet" href="src/style/variables.css" />
+    <link rel="stylesheet" href="src/style/reset.css" />
+    <link rel="stylesheet" href="src/style/base.css" />
+    <link rel="stylesheet" href="src/style/components.css" />
     <style>
-        .test-info {
-            background: var(--glass-bg);
-            backdrop-filter: var(--backdrop-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 20px;
-            margin: 20px 0;
-            color: var(--text-primary);
-        }
-        .test-button {
-            background: var(--glass-bg);
-            backdrop-filter: var(--backdrop-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 10px 20px;
-            color: var(--text-primary);
-            cursor: pointer;
-            margin: 5px;
-        }
-        .test-button:hover {
-            background: var(--bg-secondary);
-            transform: translateY(-2px);
-        }
-        .status-ok {
-            color: #28a745;
-        }
-        .status-error {
-            color: #dc3545;
-        }
-        .status-warning {
-            color: #ffc107;
-        }
-        .debug-log {
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            padding: 10px;
-            margin: 10px 0;
-            font-family: monospace;
-            font-size: 12px;
-            max-height: 200px;
-            overflow-y: auto;
-        }
+      .test-info {
+        background: var(--glass-bg);
+        backdrop-filter: var(--backdrop-blur);
+        border: 1px solid var(--glass-border);
+        border-radius: 16px;
+        padding: 20px;
+        margin: 20px 0;
+        color: var(--text-primary);
+      }
+      .test-button {
+        background: var(--glass-bg);
+        backdrop-filter: var(--backdrop-blur);
+        border: 1px solid var(--glass-border);
+        border-radius: 12px;
+        padding: 10px 20px;
+        color: var(--text-primary);
+        cursor: pointer;
+        margin: 5px;
+      }
+      .test-button:hover {
+        background: var(--bg-secondary);
+        transform: translateY(-2px);
+      }
+      .status-ok {
+        color: #28a745;
+      }
+      .status-error {
+        color: #dc3545;
+      }
+      .status-warning {
+        color: #ffc107;
+      }
+      .debug-log {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 10px;
+        margin: 10px 0;
+        font-family: monospace;
+        font-size: 12px;
+        max-height: 200px;
+        overflow-y: auto;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="test-info">
-            <h2>🧪 Test Page</h2>
-            <p>This page tests if all scripts are loaded and working properly.</p>
-            <div id="testResults"></div>
-            <div id="debugLog" class="debug-log"></div>
+      <div class="test-info">
+        <h2>🧪 Test Page</h2>
+        <p>This page tests if all scripts are loaded and working properly.</p>
+        <div id="testResults"></div>
+        <div id="debugLog" class="debug-log"></div>
+      </div>
+
+      <header class="header">
+        <h1 data-i18n="app_title">Text Analyzer</h1>
+        <div class="controls">
+          <div class="language-controls">
+            <select class="language-select" id="languageSelect">
+              <option value="en">English</option>
+              <option value="es">Español</option>
+              <option value="ru">Русский</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
+            </select>
+          </div>
+          <button class="btn theme-toggle" id="themeToggle" data-i18n="theme_toggle" title="TogT">🌙</button>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <div class="textarea-container">
+          <label for="textInput" class="textarea-label" data-i18n="enter_text">Enter your text</label>
+          <textarea id="textInput" placeholder="Type or paste your text here..." data-i18n-placeholder="text_placeholder"></textarea>
         </div>
 
-        <header class="header">
-            <h1 data-i18n="app_title">Text Analyzer</h1>
-            <div class="controls">
-                <div class="language-controls">
-                    <select class="language-select" id="languageSelect">
-                        <option value="en">English</option>
-                        <option value="es">Español</option>
-                        <option value="ru">Русский</option>
-                        <option value="fr">Français</option>
-                        <option value="de">Deutsch</option>
-                    </select>
-                </div>
-                <button class="btn theme-toggle" id="themeToggle" data-i18n="theme_toggle" title="TogT">
-                    🌙
-                </button>
-            </div>
-        </header>
-
-        <main class="main-content">
-            <div class="textarea-container">
-                <label for="textInput" class="textarea-label" data-i18n="enter_text">Enter your text</label>
-                <textarea 
-                    id="textInput" 
-                    placeholder="Type or paste your text here..."
-                    data-i18n-placeholder="text_placeholder"
-                ></textarea>
-            </div>
-
-            <div class="stats">
-                <div class="stat-card">
-                    <div class="stat-value" id="wordCount">0</div>
-                    <div class="stat-label" data-i18n="word_count">Word count</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="charCountWithSpaces">0</div>
-                    <div class="stat-label" data-i18n="char_count_with_spaces">Character count with spaces</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="charCountWithoutSpaces">0</div>
-                    <div class="stat-label" data-i18n="char_count_without_spaces">Character count without spaces</div>
-                </div>
-            </div>
-        </main>
-
-        <div class="test-info">
-            <h3>Test Controls</h3>
-            <button class="test-button" onclick="testThemeToggle()">Test Theme Toggle</button>
-            <button class="test-button" onclick="testLanguageChange()">Test Language Change</button>
-            <button class="test-button" onclick="testTextAnalysis()">Test Text Analysis</button>
-            <button class="test-button" onclick="showDebugInfo()">Show Debug Info</button>
-            <button class="test-button" onclick="testJSONLoading()">Test JSON Loading</button>
-            <button class="test-button" onclick="clearLog()">Clear Log</button>
+        <div class="stats">
+          <div class="stat-card">
+            <div class="stat-value" id="wordCount">0</div>
+            <div class="stat-label" data-i18n="word_count">Word count</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="charCountWithSpaces">0</div>
+            <div class="stat-label" data-i18n="char_count_with_spaces">Character count with spaces</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="charCountWithoutSpaces">0</div>
+            <div class="stat-label" data-i18n="char_count_without_spaces">Character count without spaces</div>
+          </div>
         </div>
+      </main>
+
+      <div class="test-info">
+        <h3>Test Controls</h3>
+        <button class="test-button" onclick="testThemeToggle()">Test Theme Toggle</button>
+        <button class="test-button" onclick="testLanguageChange()">Test Language Change</button>
+        <button class="test-button" onclick="testTextAnalysis()">Test Text Analysis</button>
+        <button class="test-button" onclick="showDebugInfo()">Show Debug Info</button>
+        <button class="test-button" onclick="testJSONLoading()">Test JSON Loading</button>
+        <button class="test-button" onclick="clearLog()">Clear Log</button>
+      </div>
     </div>
 
     <script src="src/script/console-protection.js"></script>
@@ -122,136 +116,136 @@
     <script src="src/script/theme.js"></script>
     <script src="src/script/counter.js"></script>
     <script src="src/script/main.js"></script>
-    
+
     <script>
-        // Debug logging using the console protection system
-        function log(message, type = 'info') {
-            console.log(`[${type.toUpperCase()}] ${message}`);
-        }
+      // Debug logging using the console protection system
+      function log(message, type = 'info') {
+        console.log(`[${type.toUpperCase()}] ${message}`);
+      }
 
-        function clearLog() {
-            if (window.consoleProtection) {
-                window.consoleProtection.clearDebugLog();
-            }
+      function clearLog() {
+        if (window.consoleProtection) {
+          window.consoleProtection.clearDebugLog();
         }
+      }
 
-        // Test functions
-        function testThemeToggle() {
-            log('Testing theme toggle...', 'info');
-            if (window.themeManager) {
-                window.themeManager.toggleTheme();
-                updateTestResults('✅ Theme toggled successfully');
-                log('Theme toggle test passed', 'ok');
-            } else {
-                updateTestResults('❌ ThemeManager not found');
-                log('ThemeManager not available', 'error');
-            }
+      // Test functions
+      function testThemeToggle() {
+        log('Testing theme toggle...', 'info');
+        if (window.themeManager) {
+          window.themeManager.toggleTheme();
+          updateTestResults('✅ Theme toggled successfully');
+          log('Theme toggle test passed', 'ok');
+        } else {
+          updateTestResults('❌ ThemeManager not found');
+          log('ThemeManager not available', 'error');
         }
+      }
 
-        function testLanguageChange() {
-            log('Testing language change...', 'info');
-            if (window.i18n) {
-                const currentLang = window.i18n.currentLang;
-                const newLang = currentLang === 'en' ? 'es' : 'en';
-                window.i18n.setLanguage(newLang);
-                updateTestResults(`✅ Language changed from ${currentLang} to ${newLang}`);
-                log(`Language changed from ${currentLang} to ${newLang}`, 'ok');
-            } else {
-                updateTestResults('❌ I18n not found');
-                log('I18n not available', 'error');
-            }
+      function testLanguageChange() {
+        log('Testing language change...', 'info');
+        if (window.i18n) {
+          const currentLang = window.i18n.currentLang;
+          const newLang = currentLang === 'en' ? 'es' : 'en';
+          window.i18n.setLanguage(newLang);
+          updateTestResults(`✅ Language changed from ${currentLang} to ${newLang}`);
+          log(`Language changed from ${currentLang} to ${newLang}`, 'ok');
+        } else {
+          updateTestResults('❌ I18n not found');
+          log('I18n not available', 'error');
         }
+      }
 
-        function testTextAnalysis() {
-            log('Testing text analysis...', 'info');
-            const textarea = document.getElementById('textInput');
-            if (textarea) {
-                textarea.value = 'Hello world! This is a test.';
-                textarea.dispatchEvent(new Event('input'));
-                updateTestResults('✅ Text analysis test completed');
-                log('Text analysis test completed', 'ok');
-            } else {
-                updateTestResults('❌ Textarea not found');
-                log('Textarea not found', 'error');
-            }
+      function testTextAnalysis() {
+        log('Testing text analysis...', 'info');
+        const textarea = document.getElementById('textInput');
+        if (textarea) {
+          textarea.value = 'Hello world! This is a test.';
+          textarea.dispatchEvent(new Event('input'));
+          updateTestResults('✅ Text analysis test completed');
+          log('Text analysis test completed', 'ok');
+        } else {
+          updateTestResults('❌ Textarea not found');
+          log('Textarea not found', 'error');
         }
+      }
 
-        function testJSONLoading() {
-            log('Testing JSON file loading...', 'info');
-            const testFiles = [
-                'src/i18n/base.json',
-                'src/i18n/config.json',
-                'src/i18n/en.json',
-                'src/i18n/es.json',
-                'src/i18n/ru.json',
-                'src/i18n/fr.json',
-                'src/i18n/de.json'
-            ];
-            
-            let results = [];
-            testFiles.forEach(file => {
-                fetch(file)
-                    .then(response => {
-                        if (response.ok) {
-                            log(`✅ ${file} loaded successfully`, 'ok');
-                            results.push(`✅ ${file}`);
-                        } else {
-                            log(`❌ ${file} failed to load (${response.status})`, 'error');
-                            results.push(`❌ ${file} (${response.status})`);
-                        }
-                    })
-                    .catch(error => {
-                        log(`❌ ${file} error: ${error.message}`, 'error');
-                        results.push(`❌ ${file} (${error.message})`);
-                    });
+      function testJSONLoading() {
+        log('Testing JSON file loading...', 'info');
+        const testFiles = [
+          'src/i18n/base.json',
+          'src/i18n/config.json',
+          'src/i18n/en.json',
+          'src/i18n/es.json',
+          'src/i18n/ru.json',
+          'src/i18n/fr.json',
+          'src/i18n/de.json',
+        ];
+
+        let results = [];
+        testFiles.forEach(file => {
+          fetch(file)
+            .then(response => {
+              if (response.ok) {
+                log(`✅ ${file} loaded successfully`, 'ok');
+                results.push(`✅ ${file}`);
+              } else {
+                log(`❌ ${file} failed to load (${response.status})`, 'error');
+                results.push(`❌ ${file} (${response.status})`);
+              }
+            })
+            .catch(error => {
+              log(`❌ ${file} error: ${error.message}`, 'error');
+              results.push(`❌ ${file} (${error.message})`);
             });
-            
-            setTimeout(() => {
-                updateTestResults('JSON Loading Test:\n' + results.join('\n'));
-            }, 1000);
-        }
-
-        function showDebugInfo() {
-            log('Showing debug info...', 'info');
-            const info = {
-                config: window.config ? '✅ Loaded' : '❌ Not loaded',
-                translations: window.translations ? '✅ Loaded' : '❌ Not loaded',
-                i18n: window.i18n ? '✅ Initialized' : '❌ Not initialized',
-                themeManager: window.themeManager ? '✅ Initialized' : '❌ Not initialized',
-                textAnalyzer: window.textAnalyzer ? '✅ Initialized' : '❌ Not initialized',
-                currentTheme: window.themeManager?.currentTheme || 'Unknown',
-                currentLang: window.i18n?.currentLang || 'Unknown',
-                localStorage: window.localStorage ? '✅ Available' : '❌ Not available',
-                fetch: window.fetch ? '✅ Available' : '❌ Not available',
-                supportedLanguages: window.config?.app?.supported_languages?.join(', ') || 'Unknown'
-            };
-            
-            const debugText = Object.entries(info)
-                .map(([key, value]) => `${key}: ${value}`)
-                .join('\n');
-            
-            updateTestResults(debugText);
-            log('Debug info displayed', 'ok');
-        }
-
-        function updateTestResults(message) {
-            const resultsDiv = document.getElementById('testResults');
-            if (resultsDiv) {
-                resultsDiv.innerHTML = `<pre>${message}</pre>`;
-            }
-        }
-
-        // Auto-run tests after page load
-        window.addEventListener('load', () => {
-            log('Page loaded, starting auto-tests...', 'info');
-            setTimeout(() => {
-                showDebugInfo();
-                log('Auto-tests completed', 'ok');
-            }, 2000);
         });
 
-        // Console protection is now handled by console-protection.js
-        // Debug area logging is automatically enabled for this page
+        setTimeout(() => {
+          updateTestResults('JSON Loading Test:\n' + results.join('\n'));
+        }, 1000);
+      }
+
+      function showDebugInfo() {
+        log('Showing debug info...', 'info');
+        const info = {
+          config: window.config ? '✅ Loaded' : '❌ Not loaded',
+          translations: window.translations ? '✅ Loaded' : '❌ Not loaded',
+          i18n: window.i18n ? '✅ Initialized' : '❌ Not initialized',
+          themeManager: window.themeManager ? '✅ Initialized' : '❌ Not initialized',
+          textAnalyzer: window.textAnalyzer ? '✅ Initialized' : '❌ Not initialized',
+          currentTheme: window.themeManager?.currentTheme || 'Unknown',
+          currentLang: window.i18n?.currentLang || 'Unknown',
+          localStorage: window.localStorage ? '✅ Available' : '❌ Not available',
+          fetch: window.fetch ? '✅ Available' : '❌ Not available',
+          supportedLanguages: window.config?.app?.supported_languages?.join(', ') || 'Unknown',
+        };
+
+        const debugText = Object.entries(info)
+          .map(([key, value]) => `${key}: ${value}`)
+          .join('\n');
+
+        updateTestResults(debugText);
+        log('Debug info displayed', 'ok');
+      }
+
+      function updateTestResults(message) {
+        const resultsDiv = document.getElementById('testResults');
+        if (resultsDiv) {
+          resultsDiv.innerHTML = `<pre>${message}</pre>`;
+        }
+      }
+
+      // Auto-run tests after page load
+      window.addEventListener('load', () => {
+        log('Page loaded, starting auto-tests...', 'info');
+        setTimeout(() => {
+          showDebugInfo();
+          log('Auto-tests completed', 'ok');
+        }, 2000);
+      });
+
+      // Console protection is now handled by console-protection.js
+      // Debug area logging is automatically enabled for this page
     </script>
-</body>
-</html> 
+  </body>
+</html>

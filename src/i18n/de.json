@@ -1,12 +1,12 @@
 {
-    "extends": "base.json",
-    "app_title": "Text-Analysator",
-    "enter_text": "Geben Sie Ihren Text ein",
-    "text_placeholder": "Text hier eingeben oder einfügen...",
-    "word_count": "Wortanzahl",
-    "char_count_with_spaces": "Zeichenanzahl mit Leerzeichen",
-    "char_count_without_spaces": "Zeichenanzahl ohne Leerzeichen",
-    "light_theme": "Helles Thema",
-    "dark_theme": "Dunkles Thema",
-    "theme_toggle": "Thema wechseln"
-} 
+  "extends": "base.json",
+  "app_title": "Text-Analysator",
+  "enter_text": "Geben Sie Ihren Text ein",
+  "text_placeholder": "Text hier eingeben oder einfügen...",
+  "word_count": "Wortanzahl",
+  "char_count_with_spaces": "Zeichenanzahl mit Leerzeichen",
+  "char_count_without_spaces": "Zeichenanzahl ohne Leerzeichen",
+  "light_theme": "Helles Thema",
+  "dark_theme": "Dunkles Thema",
+  "theme_toggle": "Thema wechseln"
+}

@@ -1,12 +1,12 @@
 {
-    "extends": "base.json",
-    "app_title": "Analyseur de Texte",
-    "enter_text": "Entrez votre texte",
-    "text_placeholder": "Tapez ou collez votre texte ici...",
-    "word_count": "Nombre de mots",
-    "char_count_with_spaces": "Nombre de caractères avec espaces",
-    "char_count_without_spaces": "Nombre de caractères sans espaces",
-    "light_theme": "Thème clair",
-    "dark_theme": "Thème sombre",
-    "theme_toggle": "Changer le thème"
-} 
+  "extends": "base.json",
+  "app_title": "Analyseur de Texte",
+  "enter_text": "Entrez votre texte",
+  "text_placeholder": "Tapez ou collez votre texte ici...",
+  "word_count": "Nombre de mots",
+  "char_count_with_spaces": "Nombre de caractères avec espaces",
+  "char_count_without_spaces": "Nombre de caractères sans espaces",
+  "light_theme": "Thème clair",
+  "dark_theme": "Thème sombre",
+  "theme_toggle": "Changer le thème"
+}

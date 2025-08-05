@@ -1,39 +1,39 @@
 {
-    "extends": "base.json",
-    "app": {
-        "name": "Text Analyzer",
-        "version": "1.0.0",
-        "default_language": "en",
-        "supported_languages": ["en", "es", "ru", "fr", "de"],
-        "storage_keys": {
-            "language": "preferred-language",
-            "theme": "preferred-theme"
-        }
-    },
-    "themes": {
-        "light": "light",
-        "dark": "dark",
-        "auto": "auto"
-    },
-    "icons": {
-        "theme": {
-            "light": "🌙",
-            "dark": "☀️"
-        }
-    },
-    "text_analysis": {
-        "default_values": {
-            "word_count": 0,
-            "char_count_with_spaces": 0,
-            "char_count_without_spaces": 0
-        },
-        "update_events": ["input", "paste", "keyup"]
-    },
-    "ui": {
-        "responsive_breakpoints": {
-            "mobile": 600,
-            "small_mobile": 400
-        },
-        "animation_duration": "0.3s"
+  "extends": "base.json",
+  "app": {
+    "name": "Text Analyzer",
+    "version": "1.0.0",
+    "default_language": "en",
+    "supported_languages": ["en", "es", "ru", "fr", "de"],
+    "storage_keys": {
+      "language": "preferred-language",
+      "theme": "preferred-theme"
     }
-} 
+  },
+  "themes": {
+    "light": "light",
+    "dark": "dark",
+    "auto": "auto"
+  },
+  "icons": {
+    "theme": {
+      "light": "🌙",
+      "dark": "☀️"
+    }
+  },
+  "text_analysis": {
+    "default_values": {
+      "word_count": 0,
+      "char_count_with_spaces": 0,
+      "char_count_without_spaces": 0
+    },
+    "update_events": ["input", "paste", "keyup"]
+  },
+  "ui": {
+    "responsive_breakpoints": {
+      "mobile": 600,
+      "small_mobile": 400
+    },
+    "animation_duration": "0.3s"
+  }
+}

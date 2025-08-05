@@ -17,22 +17,24 @@ The i18n-template project experienced a recursive console logging issue where th
 The issue was located in `test.html` lines 261-279, where console methods were overridden without proper recursion protection:
 
 ### Original Problematic Code
+
 ```javascript
 // Override console.log to also log to our debug area
 const originalConsoleLog = console.log;
 
-console.log = function(...args) {
-    originalConsoleLog.apply(console, args);
-    log(args.join(' '), 'info');  // This calls console.log again!
+console.log = function (...args) {
+  originalConsoleLog.apply(console, args);
+  log(args.join(' '), 'info'); // This calls console.log again!
 };
 
 function log(message, type = 'info') {
-    // ... DOM updates ...
-    console.log(`[${type.toUpperCase()}] ${message}`);  // Recursion trigger!
+  // ... DOM updates ...
+  console.log(`[${type.toUpperCase()}] ${message}`); // Recursion trigger!
 }
 ```
 
 ### The Recursion Loop
+
 1. `console.log()` is called from application code
 2. Overridden `console.log()` calls original console.log AND `log()` function
 3. `log()` function calls `console.log()` again
@@ -41,42 +43,45 @@ function log(message, type = 'info') {
 ## Solution Implemented
 
 ### 1. Recursion Guard Pattern
+
 Added a boolean flag to prevent recursive calls:
 
 ```javascript
 let isLoggingInProgress = false;
 
-console.log = function(...args) {
-    originalConsoleLog.apply(console, args);
-    
-    if (!isLoggingInProgress) {
-        isLoggingInProgress = true;
-        try {
-            logToDebugArea(args.join(' '), 'info');
-        } finally {
-            isLoggingInProgress = false;
-        }
+console.log = function (...args) {
+  originalConsoleLog.apply(console, args);
+
+  if (!isLoggingInProgress) {
+    isLoggingInProgress = true;
+    try {
+      logToDebugArea(args.join(' '), 'info');
+    } finally {
+      isLoggingInProgress = false;
     }
+  }
 };
 ```
 
 ### 2. Safe Logging Function
+
 Created a separate function that doesn't use console methods:
 
 ```javascript
 function logToDebugArea(message, type = 'info') {
-    const debugLog = document.getElementById('debugLog');
-    if (debugLog) {
-        const timestamp = new Date().toLocaleTimeString();
-        const logEntry = document.createElement('div');
-        logEntry.innerHTML = `<span style="color: #666;">[${timestamp}]</span> <span class="status-${type}">${message}</span>`;
-        debugLog.appendChild(logEntry);
-        debugLog.scrollTop = debugLog.scrollHeight;
-    }
+  const debugLog = document.getElementById('debugLog');
+  if (debugLog) {
+    const timestamp = new Date().toLocaleTimeString();
+    const logEntry = document.createElement('div');
+    logEntry.innerHTML = `<span style="color: #666;">[${timestamp}]</span> <span class="status-${type}">${message}</span>`;
+    debugLog.appendChild(logEntry);
+    debugLog.scrollTop = debugLog.scrollHeight;
+  }
 }
 ```
 
 ### 3. Original Method References
+
 Stored references to original console methods for safe access:
 
 ```javascript
@@ -92,7 +97,7 @@ console.warn.__original = originalConsoleWarn;
 ## Files Verified Clean
 
 - `index.html` - No console overrides
-- `embed.html` - No console overrides  
+- `embed.html` - No console overrides
 - `quick-test.html` - No console overrides
 - `src/script/main.js` - Normal console usage
 - `src/script/i18n.js` - Normal console usage
@@ -128,25 +133,25 @@ console.warn.__original = originalConsoleWarn;
 const originalConsoleLog = console.log;
 let isLoggingInProgress = false;
 
-console.log = function(...args) {
-    // Always call original first
-    originalConsoleLog.apply(console, args);
-    
-    // Recursion guard
-    if (!isLoggingInProgress) {
-        isLoggingInProgress = true;
-        try {
-            // Custom logic that doesn't call console methods
-            customLogHandler(args.join(' '));
-        } finally {
-            isLoggingInProgress = false;
-        }
+console.log = function (...args) {
+  // Always call original first
+  originalConsoleLog.apply(console, args);
+
+  // Recursion guard
+  if (!isLoggingInProgress) {
+    isLoggingInProgress = true;
+    try {
+      // Custom logic that doesn't call console methods
+      customLogHandler(args.join(' '));
+    } finally {
+      isLoggingInProgress = false;
     }
+  }
 };
 
 function customLogHandler(message) {
-    // Safe implementation that doesn't use console methods
-    // Use DOM manipulation, localStorage, or other APIs
+  // Safe implementation that doesn't use console methods
+  // Use DOM manipulation, localStorage, or other APIs
 }
 ```
 
@@ -158,4 +163,5 @@ function customLogHandler(message) {
 - **Added**: Safeguards against future similar issues
 
 ## Date Fixed
+
 2025-08-04

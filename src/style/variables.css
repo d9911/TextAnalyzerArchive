@@ -1,75 +1,75 @@
 /* CSS Variables for theming */
 :root {
-    /* Light theme - Glass morphism */
-    --bg-primary: rgba(255, 255, 255, 0.8);
-    --bg-secondary: rgba(248, 249, 250, 0.6);
-    --bg-tertiary: rgba(255, 255, 255, 0.4);
-    --text-primary: #212529;
-    --text-secondary: #6c757d;
-    --border-primary: rgba(33, 37, 41, 0.1);
-    --border-secondary: rgba(33, 37, 41, 0.05);
-    --shadow-primary: 0 8px 32px rgba(0, 0, 0, 0.1);
-    --shadow-secondary: 0 4px 16px rgba(0, 0, 0, 0.08);
-    --glass-bg: rgba(255, 255, 255, 0.25);
-    --glass-border: rgba(255, 255, 255, 0.18);
-    --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
-    --backdrop-blur: blur(10px);
+  /* Light theme - Glass morphism */
+  --bg-primary: rgba(255, 255, 255, 0.8);
+  --bg-secondary: rgba(248, 249, 250, 0.6);
+  --bg-tertiary: rgba(255, 255, 255, 0.4);
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-primary: rgba(33, 37, 41, 0.1);
+  --border-secondary: rgba(33, 37, 41, 0.05);
+  --shadow-primary: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-secondary: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  --backdrop-blur: blur(10px);
 }
 
-[data-theme="dark"] {
-    /* Dark theme - Glass morphism */
-    --bg-primary: rgba(33, 37, 41, 0.8);
-    --bg-secondary: rgba(52, 58, 64, 0.6);
-    --bg-tertiary: rgba(33, 37, 41, 0.4);
-    --text-primary: #f8f9fa;
-    --text-secondary: #adb5bd;
-    --border-primary: rgba(248, 249, 250, 0.1);
-    --border-secondary: rgba(248, 249, 250, 0.05);
-    --shadow-primary: 0 8px 32px rgba(0, 0, 0, 0.3);
-    --shadow-secondary: 0 4px 16px rgba(0, 0, 0, 0.2);
-    --glass-bg: rgba(33, 37, 41, 0.25);
-    --glass-border: rgba(248, 249, 250, 0.18);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    --backdrop-blur: blur(10px);
+[data-theme='dark'] {
+  /* Dark theme - Glass morphism */
+  --bg-primary: rgba(33, 37, 41, 0.8);
+  --bg-secondary: rgba(52, 58, 64, 0.6);
+  --bg-tertiary: rgba(33, 37, 41, 0.4);
+  --text-primary: #f8f9fa;
+  --text-secondary: #adb5bd;
+  --border-primary: rgba(248, 249, 250, 0.1);
+  --border-secondary: rgba(248, 249, 250, 0.05);
+  --shadow-primary: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-secondary: 0 4px 16px rgba(0, 0, 0, 0.2);
+  --glass-bg: rgba(33, 37, 41, 0.25);
+  --glass-border: rgba(248, 249, 250, 0.18);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --backdrop-blur: blur(10px);
 }
 
 /* Global glass morphism styles */
 .glass {
-    background: var(--glass-bg);
-    backdrop-filter: var(--backdrop-blur);
-    -webkit-backdrop-filter: var(--backdrop-blur);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
+  background: var(--glass-bg);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
 }
 
 .glass-card {
-    background: var(--glass-bg);
-    backdrop-filter: var(--backdrop-blur);
-    -webkit-backdrop-filter: var(--backdrop-blur);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
-    border-radius: 16px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 16px;
 }
 
 .glass-input {
-    background: var(--glass-bg);
-    backdrop-filter: var(--backdrop-blur);
-    -webkit-backdrop-filter: var(--backdrop-blur);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
+  background: var(--glass-bg);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
 }
 
 .glass-button {
-    background: var(--glass-bg);
-    backdrop-filter: var(--backdrop-blur);
-    -webkit-backdrop-filter: var(--backdrop-blur);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
-    transition: all 0.3s ease;
+  background: var(--glass-bg);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
 }
 
 .glass-button:hover {
-    background: var(--bg-secondary);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-primary);
-} 
+  background: var(--bg-secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-primary);
+}

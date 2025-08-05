@@ -1,12 +1,12 @@
 {
-    "extends": "base.json",
-    "app_title": "Анализатор текста",
-    "enter_text": "Введите ваш текст",
-    "text_placeholder": "Введите или вставьте ваш текст здесь...",
-    "word_count": "Количество слов",
-    "char_count_with_spaces": "Количество символов с пробелами",
-    "char_count_without_spaces": "Количество символов без пробелов",
-    "light_theme": "Светлая тема",
-    "dark_theme": "Темная тема",
-    "theme_toggle": "Переключить тему"
-} 
+  "extends": "base.json",
+  "app_title": "Анализатор текста",
+  "enter_text": "Введите ваш текст",
+  "text_placeholder": "Введите или вставьте ваш текст здесь...",
+  "word_count": "Количество слов",
+  "char_count_with_spaces": "Количество символов с пробелами",
+  "char_count_without_spaces": "Количество символов без пробелов",
+  "light_theme": "Светлая тема",
+  "dark_theme": "Темная тема",
+  "theme_toggle": "Переключить тему"
+}
