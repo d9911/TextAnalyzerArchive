@@ -1,27 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Text Analyzer</title>
-    <meta name="theme-color" content="#fbfbfb" />
-    <link rel="icon" href="src/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" sizes="32x32" href="src/img/icon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="src/img/icon-16x16.png" />
-    <link rel="apple-touch-icon" href="src/img/icon-192x192.png" />
-    <link rel="manifest" href="src/manifest.json" />
+    <title>Text Analyzer Archive — быстрый подсчёт текста</title>
+    <meta name="theme-color" content="#080b12" />
     <link rel="stylesheet" href="src/style/variables.css" />
     <link rel="stylesheet" href="src/style/reset.css" />
     <link rel="stylesheet" href="src/style/base.css" />
     <link rel="stylesheet" href="src/style/components.css" />
-  </head>
+    <meta name="description" content="Лёгкая архивная версия анализатора для подсчёта слов и символов в реальном времени." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://text-analyzer-archive.d9911.org/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Text Analyzer Archive — быстрый подсчёт текста" />
+  <meta property="og:description" content="Лёгкая архивная версия анализатора для подсчёта слов и символов в реальном времени." />
+  <meta property="og:url" content="https://text-analyzer-archive.d9911.org/" />
+  <meta property="og:image" content="https://text-analyzer-archive.d9911.org/src/img/icon-512x512.png" />
+  <meta property="og:image:alt" content="Text Analyzer Archive logo" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Text Analyzer Archive — быстрый подсчёт текста" />
+  <meta name="twitter:description" content="Лёгкая архивная версия анализатора для подсчёта слов и символов в реальном времени." />
+  <meta name="twitter:image" content="https://text-analyzer-archive.d9911.org/src/img/icon-512x512.png" />
+  <link rel="icon" href="src/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="src/img/icon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="src/img/icon-192x192.png" />
+  <link rel="manifest" href="src/manifest.json" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Text Analyzer Archive",
+      "url": "https://text-analyzer-archive.d9911.org/",
+      "description": "Лёгкая архивная версия анализатора для подсчёта слов и символов в реальном времени.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "inLanguage": [
+        "ru",
+        "en",
+        "es",
+        "fr",
+        "de"
+      ],
+      "isAccessibleForFree": true
+    }
+  </script>
+</head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to text analyzer</a>
     <div class="container">
       <header class="header">
         <h1 data-i18n="app_title">Text Analyzer</h1>
         <div class="controls">
           <div class="language-controls">
-            <select class="language-select" id="languageSelect">
+            <label class="sr-only" for="languageSelect">Interface language</label>
+            <select class="language-select" id="languageSelect" aria-label="Interface language">
               <option value="en">English</option>
               <option value="es">Español</option>
               <option value="ru">Русский</option>
@@ -33,13 +68,13 @@
         </div>
       </header>
 
-      <main class="main-content">
+      <main class="main-content" id="main-content" tabindex="-1">
         <div class="textarea-container">
           <label for="textInput" class="textarea-label" data-i18n="enter_text">Enter your text</label>
           <textarea id="textInput" placeholder="Type or paste your text here..." data-i18n-placeholder="text_placeholder"></textarea>
         </div>
 
-        <div class="stats">
+        <div class="stats" aria-live="polite">
           <div class="stat-card">
             <div class="stat-value" id="wordCount">0</div>
             <div class="stat-label" data-i18n="word_count">Word count</div>

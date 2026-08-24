@@ -1,16 +1,21 @@
 {
   "name": "Text Analyzer Archive",
   "short_name": "Text Archive",
-  "description": "Standalone archived edition of Text Analyzer",
+  "description": "Лёгкая архивная версия анализатора для подсчёта слов и символов в реальном времени.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#fbfbfb",
-  "theme_color": "#4a90e2",
+  "background_color": "#080b12",
+  "theme_color": "#080b12",
   "icons": [
     {
       "src": "img/icon-192x192.png",
       "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icon-512x512.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]
