@@ -1,0 +1,4 @@
+name = "d9911-text-analyzer-archive"
+pages_build_output_dir = "."
+compatibility_date = "2026-08-24"
+send_metrics = false

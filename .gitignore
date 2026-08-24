@@ -1,0 +1,17 @@
+# Generated output
+/build/
+/dist/
+
+# Dependencies and local configuration
+/node_modules/
+.env
+.env.*
+!.env.example
+
+# Editor and operating-system metadata
+.DS_Store
+**/.DS_Store
+Icon?
+._*
+.vscode/
+.idea/

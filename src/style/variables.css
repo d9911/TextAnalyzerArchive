@@ -1,36 +1,42 @@
 /* CSS Variables for theming */
 :root {
-  /* Light theme - Glass morphism */
-  --bg-primary: rgba(255, 255, 255, 0.8);
-  --bg-secondary: rgba(248, 249, 250, 0.6);
-  --bg-tertiary: rgba(255, 255, 255, 0.4);
-  --text-primary: #212529;
-  --text-secondary: #6c757d;
-  --border-primary: rgba(33, 37, 41, 0.1);
-  --border-secondary: rgba(33, 37, 41, 0.05);
-  --shadow-primary: 0 8px 32px rgba(0, 0, 0, 0.1);
+  /* Pastel Breeze foundation from i18n-layout-template */
+  --primary-color: #4a90e2;
+  --accent-color: #64d2ff;
+  --bg-primary: #fbfbfb;
+  --bg-secondary: #f5f5f5;
+  --bg-tertiary: #f0f0f0;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --border-primary: #e0e0e0;
+  --border-secondary: #d0d0d0;
+  --gradient-primary: linear-gradient(135deg, #c6e7ff, #ffddae);
+  --shadow-primary: 0 12px 40px rgba(74, 144, 226, 0.2);
   --shadow-secondary: 0 4px 16px rgba(0, 0, 0, 0.08);
-  --glass-bg: rgba(255, 255, 255, 0.25);
-  --glass-border: rgba(255, 255, 255, 0.18);
-  --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  --glass-bg: rgba(251, 251, 251, 0.72);
+  --glass-border: rgba(224, 224, 224, 0.7);
+  --glass-shadow: 0 8px 32px rgba(74, 144, 226, 0.15);
   --backdrop-blur: blur(10px);
+  --transition: color 0.3s ease, background 0.3s ease, border-color 0.3s ease;
 }
 
 [data-theme='dark'] {
-  /* Dark theme - Glass morphism */
-  --bg-primary: rgba(33, 37, 41, 0.8);
-  --bg-secondary: rgba(52, 58, 64, 0.6);
-  --bg-tertiary: rgba(33, 37, 41, 0.4);
-  --text-primary: #f8f9fa;
-  --text-secondary: #adb5bd;
-  --border-primary: rgba(248, 249, 250, 0.1);
-  --border-secondary: rgba(248, 249, 250, 0.05);
-  --shadow-primary: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --primary-color: #8ab4f8;
+  --accent-color: #64d2ff;
+  --bg-primary: #0e0e10;
+  --bg-secondary: #1a1a1d;
+  --bg-tertiary: #2a2a2e;
+  --text-primary: #ededed;
+  --text-secondary: #cccccc;
+  --border-primary: rgba(255, 255, 255, 0.15);
+  --border-secondary: rgba(255, 255, 255, 0.1);
+  --gradient-primary: radial-gradient(circle at 30% 30%, #1a1a1d, #0e0e10 80%);
+  --shadow-primary: 0 12px 40px rgba(0, 0, 0, 0.5);
   --shadow-secondary: 0 4px 16px rgba(0, 0, 0, 0.2);
-  --glass-bg: rgba(33, 37, 41, 0.25);
-  --glass-border: rgba(248, 249, 250, 0.18);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --backdrop-blur: blur(10px);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 4px 16px rgba(0, 150, 255, 0.1);
+  --backdrop-blur: blur(14px);
 }
 
 /* Global glass morphism styles */

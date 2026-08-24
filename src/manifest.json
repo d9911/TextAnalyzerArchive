@@ -1,0 +1,17 @@
+{
+  "name": "Text Analyzer Archive",
+  "short_name": "Text Archive",
+  "description": "Standalone archived edition of Text Analyzer",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fbfbfb",
+  "theme_color": "#4a90e2",
+  "icons": [
+    {
+      "src": "img/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
