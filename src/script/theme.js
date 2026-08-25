@@ -49,18 +49,16 @@ class ThemeManager {
 
     const currentLang = window.i18n.currentLang;
     const translations = window.translations;
-    const icons = window.config?.icons?.theme || { light: '🌙', dark: '☀️' };
-
     if (this.currentTheme === 'dark') {
-      const icon = icons.dark || '☀️';
       const title = translations[currentLang]?.light_theme || 'Light theme';
-      button.textContent = icon;
+      button.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2.25M12 19.75V22M4.93 4.93l1.59 1.59M17.48 17.48l1.59 1.59M2 12h2.25M19.75 12H22M4.93 19.07l1.59-1.59M17.48 6.52l1.59-1.59"/></svg>';
       button.setAttribute('title', title);
+      button.setAttribute('aria-label', title);
     } else {
-      const icon = icons.light || '🌙';
       const title = translations[currentLang]?.dark_theme || 'Dark theme';
-      button.textContent = icon;
+      button.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.2A8.5 8.5 0 0 1 8.8 3.6 8.5 8.5 0 1 0 20.4 15.2Z"/></svg>';
       button.setAttribute('title', title);
+      button.setAttribute('aria-label', title);
     }
   }
 }

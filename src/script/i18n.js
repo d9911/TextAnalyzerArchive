@@ -93,5 +93,14 @@ class I18n {
     }
 
     select.value = this.currentLang;
+    const selected = document.querySelector(`.language-menu__option[data-language="${this.currentLang}"]`);
+    const button = document.getElementById('language-menu-button');
+    if (selected && button) {
+      const name = selected.querySelector('span:nth-child(2)').textContent;
+      button.querySelector('.language-menu__flag').textContent = selected.dataset.flag;
+      button.querySelector('.language-menu__label').textContent = name;
+      button.setAttribute('aria-label', `Interface language: ${name}`);
+      document.querySelectorAll('.language-menu__option').forEach(option => option.setAttribute('aria-checked', String(option === selected)));
+    }
   }
 }

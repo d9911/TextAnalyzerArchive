@@ -244,6 +244,28 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
+  const languageRoot = document.querySelector('.language-menu');
+  const languageButton = document.getElementById('language-menu-button');
+  const languagePanel = document.getElementById('language-menu-list');
+  const languageOptions = [...document.querySelectorAll('.language-menu__option')];
+  if (languageRoot && languageButton && languagePanel && languageOptions.length) {
+    const close = focus => { languageButton.setAttribute('aria-expanded', 'false'); languagePanel.hidden = true; if (focus) languageButton.focus(); };
+    const open = last => { languageButton.setAttribute('aria-expanded', 'true'); languagePanel.hidden = false; (last ? languageOptions.at(-1) : languageOptions.find(option => option.getAttribute('aria-checked') === 'true') || languageOptions[0]).focus(); };
+    languageButton.addEventListener('click', () => languageButton.getAttribute('aria-expanded') === 'true' ? close() : open());
+    languageButton.addEventListener('keydown', event => { if (['Enter', ' ', 'ArrowDown', 'ArrowUp'].includes(event.key)) { event.preventDefault(); open(event.key === 'ArrowUp'); } });
+    languageOptions.forEach(option => option.addEventListener('click', () => { languageSelect.value = option.dataset.language; languageSelect.dispatchEvent(new Event('change')); close(true); }));
+    languagePanel.addEventListener('keydown', event => {
+      const index = languageOptions.indexOf(document.activeElement);
+      if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) {
+        event.preventDefault();
+        const next = event.key === 'Home' ? 0 : event.key === 'End' ? languageOptions.length - 1 : event.key === 'ArrowDown' ? (index + 1) % languageOptions.length : (index - 1 + languageOptions.length) % languageOptions.length;
+        languageOptions[next].focus();
+      }
+      if (event.key === 'Escape') { event.preventDefault(); close(true); }
+    });
+    document.addEventListener('pointerdown', event => { if (!languageRoot.contains(event.target)) close(); });
+  }
+
   const themeToggle = document.getElementById('themeToggle');
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
