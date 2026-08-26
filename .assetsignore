@@ -1,0 +1,10 @@
+# Publish only the static application files required at runtime.
+*
+.*
+!index.html
+!embed.html
+!test.html
+!robots.txt
+!sitemap.xml
+!src/
+!src/**
